@@ -6,9 +6,9 @@ const EntertainmentItem = (props) => {
 
   return (
     <li>
-      {props.title}
+      {props.name}
       &nbsp;
-      Released: {props.release_date}
+      Released: {props.first_air_date}
       &nbsp;
       Average Rating: {props.vote_average}
     </li>

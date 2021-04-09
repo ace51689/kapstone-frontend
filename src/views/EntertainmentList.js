@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import EntertainmentItem from "../components/EntertainmentItem"
-import { getMoviesPopular } from "../fetch requests/tmdbRequests"
+import { getEntertainment } from "../fetch requests/tmdbRequests"
 
 const EntertainmentList = (props) => {
-  const [state, setState] = useState({movies:[]})
+  const [state, setState] = useState({entertainment:[]})
+  const [medium, setMedium] = useState("tv")
+  const [sortBy, setSortBy] = useState("popular")
 
   useEffect(() => {
-    getMoviesPopular()
+    getEntertainment(medium, sortBy)
       .then((res) => setState({
-        movies: res.results
+        entertainment: res.results
       }))
-  }, [])
+  }, [medium, sortBy])
 
 
   return (
     <ul>
-      {state ? state.movies.map((movie) => (
+      {state ? state.entertainment.map((item) => (
         <EntertainmentItem
-          {...movie}
-          key={movie.id}
+          {...item}
+          key={item.id}
         />
       )) : <div>Loading Movies...</div>}
     </ul>
