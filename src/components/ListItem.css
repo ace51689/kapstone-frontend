@@ -1,0 +1,22 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+li {
+  list-style-type: none;
+  width: 90%;
+}
+
+div.card {
+  flex-direction: row;
+  /* justify-self: center; */
+}
+
+div.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

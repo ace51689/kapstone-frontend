@@ -70,6 +70,8 @@ const EntertainmentList = (props) => {
 
       Now Displaying: {medium}, Sorted By: {sortBy}, Page: {page}
 
+      <br/>
+
       <ul>
         {state ? state.entertainment.map((item) => {
           if (medium === "movie") {
