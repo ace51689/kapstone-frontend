@@ -7,5 +7,19 @@ export const getEntertainment = (medium, sortType, page) => {
   return fetch(base_URL + medium + "/" + sortType + APIKey + enUS + pageParam + page, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
-  }).then((res) => res.json())
-}
+  }).then((res) => res.json());
+};
+
+export const getMovie = (movie) => {
+  return fetch(base_URL + "movie/" + movie + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getMovieCredits = (movie) => {
+  return fetch(base_URL + "movie/" + movie + "/credits" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
