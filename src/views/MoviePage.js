@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getMovie } from "../fetch requests/tmdbRequests";
+import { getMovie, getMovieCredits } from "../fetch requests/tmdbRequests";
 
 const MoviePage = (props) => {
   const [movie, setMovie] = useState({});
-  const [cast, setCast] = useState({})
+  const [credits, setCredits] = useState({})
   const [watchProviders, setWatchProviders] = useState({})
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
     getMovie(props.match.params.movieId).then((res) => setMovie(res));
-    //Write up a "getMovieCredits" api call then store the response in state using setCast(res)
+    getMovieCredits(props.match.params.movieId).then((res) => setCredits(res))
     //Write up a "getWatchProviders" api call then store the response in state using setWatchProviders(res)
   }, []);
 
