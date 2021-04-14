@@ -20,3 +20,7 @@ div.card-header {
   justify-content: center;
   align-items: center;
 }
+
+div.card-body {
+  text-align: left;
+}

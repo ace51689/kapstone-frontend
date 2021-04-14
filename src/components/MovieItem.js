@@ -11,7 +11,7 @@ const MovieItem = (props) => {
       <li>
         <Card>
           <Card.Header>
-          <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
+            <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
           </Card.Header>
           <Card.Body>
             <Card.Title>{props.title}</Card.Title>
