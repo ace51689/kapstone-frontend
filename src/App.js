@@ -9,8 +9,12 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
+        
         <Route path="/browse" component={EntertainmentList} />
-        <Route path="/movie" component={MoviePage} />
+        
+        <Route path="/movie/:movieId" render={(routeProps) => {
+          return <MoviePage {...routeProps} />
+        }}/>
       </Switch>
     </div>
   );

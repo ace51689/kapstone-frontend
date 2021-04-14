@@ -4,8 +4,6 @@ import "./ListItem.css"
 
 const TelevisionItem = (props) => {
 
-  console.log(props)
-
   return (
     <>
       <li>
