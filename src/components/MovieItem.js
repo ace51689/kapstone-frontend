@@ -1,20 +1,23 @@
 import React from 'react'
 import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import './ListItem.css'
 
 const MovieItem = (props) => {
-
-  console.log(props)
 
   return (
     <>
       <li>
         <Card>
           <Card.Header>
-            <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
+            <Link to={"/movie/" + props.id}>
+              <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
+            </Link>
           </Card.Header>
           <Card.Body>
-            <Card.Title>{props.title}</Card.Title>
+            <Card.Title>
+              <Link to={"/movie/" + props.id}>{props.title}</Link>
+            </Card.Title>
             <Card.Text>
               Released: {props.release_date}
             &nbsp;
