@@ -33,6 +33,16 @@ const MoviePage = (props) => {
             return <h5>{crew.name}</h5>;
           }
         })}
+        <h3>Cast:</h3>
+        {cast.map((cast) => {
+          return (
+            <>
+              <img src={baseUrl + cast.profile_path} />
+              <p>{cast.name}</p>
+              <p>{cast.character}</p>
+            </>
+          );
+        })}
       </ul>
     </>
   );
