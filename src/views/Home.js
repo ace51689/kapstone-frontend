@@ -8,7 +8,7 @@ const Home = (props) => {
       <br/>
       Link to: <Link to="/browse">Browse Entertainmnet</Link>
       <br/>
-      Link to: <Link to="/movie">Movie Page Template</Link>
+      Link to: <Link to="/search">Search for Entertainment</Link>
     </div>
   )
 }
