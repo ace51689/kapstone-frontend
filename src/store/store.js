@@ -1,7 +1,7 @@
 import create from 'zustand'
 import { devtools, redux } from "zustand/middleware"
 
-const initialState = { medium: "movie", sortBy: "popular", page: "1"}
+const initialState = { medium: "movie", sortBy: "popular", page: 1}
 
 export const SET_MEDIUM = "SETMEDIUM"
 export const SET_SORT_BY = "SETSORTBY"
