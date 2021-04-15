@@ -37,3 +37,10 @@ export const getTelevisionCredits = (tvId) => {
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };
+
+export const getWatchProviders = (movieId) => {
+  return fetch(base_URL + "movie/" + movieId + "/watch/providers" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
