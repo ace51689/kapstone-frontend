@@ -1,20 +1,23 @@
 import React from 'react'
 import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import "./ListItem.css"
 
 const TelevisionItem = (props) => {
-
-  console.log(props)
 
   return (
     <>
       <li>
         <Card>
           <Card.Header>
-            <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
+            <Link to={"/tv/" + props.id}>
+              <Card.Img style={{ width: "90px" }} varient="top" src={"https://image.tmdb.org/t/p/original" + props.poster_path} />
+            </Link>
           </Card.Header>
           <Card.Body>
-            <Card.Title>{props.name}</Card.Title>
+            <Link to={"/tv/" + props.id}>
+              <Card.Title>{props.name}</Card.Title>
+            </Link>
             <Card.Text>
               Released: {props.first_air_date}
             &nbsp;
@@ -25,7 +28,7 @@ const TelevisionItem = (props) => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <br/>
+        <br />
       </li>
 
     </>
