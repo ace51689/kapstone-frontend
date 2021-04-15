@@ -13,12 +13,14 @@ li {
 div.card {
   flex-direction: row;
   /* justify-self: center; */
+  background-color:lightblue;
 }
 
 div.card-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(122, 171, 187);
 }
 
 div.card-body {
