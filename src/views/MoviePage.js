@@ -11,7 +11,11 @@ const MoviePage = (props) => {
 
   useEffect(() => {
     getMovie(props.match.params.movieId).then((res) => setMovie(res));
-    getMovieCredits(props.match.params.movieId).then((res) => setCredits(res))
+    getMovieCredits(props.match.params.movieId).then((res) => {
+      setCredits(res)
+      setCrew(res.crew)
+      setCast(res.cast)
+    })
     //Write up a "getWatchProviders" api call then store the response in state using setWatchProviders(res)
   }, []);
 
