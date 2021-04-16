@@ -31,21 +31,21 @@ const MoviePage = (props) => {
       <ul className="watch-providers">
         <h4>Streaming:</h4>
         {
-          watchProviders.flatrate && watchProviders.flatrate.map((provider) => {
+          watchProviders.flatrate ? watchProviders.flatrate.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
         <h4>Rent:</h4>
         {
-          watchProviders.rent && watchProviders.rent.map((provider) => {
+          watchProviders.rent ? watchProviders.rent.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
         <h4>Buy:</h4>
         {
-          watchProviders.buy && watchProviders.buy.map((provider) => {
+          watchProviders.buy ? watchProviders.buy.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
       </ul>
 
