@@ -3,8 +3,6 @@ import MultiSearch from "../components/MultiSearch"
 
 const SearchPage = () => {
 
-
-
   return (
     <div>
       <MultiSearch />

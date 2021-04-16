@@ -65,16 +65,16 @@ const EntertainmentList = (props) => {
               className="mr-1"
               onClick={(e) => dispatch({ type: SET_PAGE, payload: (page > 1 ? page - 1 : page) })}
             >{"<"}</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "1" })}>1</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "2" })}>2</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "3" })}>3</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "4" })}>4</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "5" })}>5</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "6" })}>6</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "7" })}>7</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "8" })}>8</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "9" })}>9</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: "10" })}>10</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 1 })}>1</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 2 })}>2</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 3 })}>3</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 4 })}>4</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 5 })}>5</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 6 })}>6</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 7 })}>7</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 8 })}>8</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 9 })}>9</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 10 })}>10</Button>
             <Button onClick={(e) =>
               dispatch({ type: SET_PAGE, payload: (page < 10 ? page + 1 : page) })}
             >{">"}</Button>
