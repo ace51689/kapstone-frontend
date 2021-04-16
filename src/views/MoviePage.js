@@ -1,55 +1,77 @@
 import React, { useEffect, useState } from "react";
-import { getMovie, getMovieCredits, getWatchProviders } from "../fetch requests/tmdbRequests";
+import { getMovie, getMovieCredits, getMovieProviders } from "../fetch requests/tmdbRequests";
 
 const MoviePage = (props) => {
   const [movie, setMovie] = useState({});
-  const [credits, setCredits] = useState({})
   const [crew, setCrew] = useState([]);
   const [cast, setCast] = useState([]);
   const [watchProviders, setWatchProviders] = useState({})
   const baseUrl = "https://image.tmdb.org/t/p/w500";
   
   useEffect(() => {
-    getWatchProviders(props.match.params.movieId).then((res)=> setWatchProviders(res));
     getMovie(props.match.params.movieId).then((res) => setMovie(res));
+    getMovieProviders(props.match.params.movieId).then((res) => {
+      setWatchProviders(res.results.US)
+    });
     getMovieCredits(props.match.params.movieId).then((res) => {
-      setCredits(res)
       setCrew(res.crew)
       setCast(res.cast)
     })
-    //Write up a "getWatchProviders" api call then store the response in state using setWatchProviders(res)
-    //https://api.themoviedb.org/3/movie/550/watch/providers?api_key=cf12cfd1e54f251c5eea0a7fe2e6cb66
-  }, []);
+  }, [props.match.params.movieId]);
 
 
   return (
     <>
       <h1>{movie.original_title}</h1>
       <h3>{movie.tagline}</h3>
-      <img src={movie.poster_path && baseUrl + movie.poster_path} />
+      <img src={movie.poster_path && baseUrl + movie.poster_path} alt={`This is the theatrical poster for ${movie.original_title}`} />
       <p>{movie.overview}</p>
+
+      <h3>Watch Providers:</h3>
+      <ul className="watch-providers">
+        <h4>Streaming:</h4>
+        {
+          watchProviders.flatrate && watchProviders.flatrate.map((provider) => {
+            return <li key={provider.provider_id}>{provider.provider_name}</li>
+          })
+        }
+        <h4>Rent:</h4>
+        {
+          watchProviders.rent && watchProviders.rent.map((provider) => {
+            return <li key={provider.provider_id}>{provider.provider_name}</li>
+          })
+        }
+        <h4>Buy:</h4>
+        {
+          watchProviders.buy && watchProviders.buy.map((provider) => {
+            return <li key={provider.provider_id}>{provider.provider_name}</li>
+          })
+        }
+      </ul>
 
       <ul>
         <h3>Executive Producers:</h3>
         {crew.map((crew) => {
           if (crew.job === "Executive Producer") {
-            return <li>{crew.name}</li>;
+            return <li key={crew.id}>{crew.name}</li>;
           }
+          return false
         })}
         <h3>Director:</h3>
         {crew.map((crew) => {
           if (crew.job === "Director") {
-            return <h5>{crew.name}</h5>;
+            return <h5 key={crew.id}>{crew.name}</h5>;
           }
+          return false
         })}
         <h3>Cast:</h3>
         {cast.map((cast) => {
           return (
-            <>
-              <img src={baseUrl + cast.profile_path} />
+            <div key={cast.id}>
+              <img src={baseUrl + cast.profile_path} alt={`This is ${cast.name}`} />
               <p>{cast.name}</p>
               <p>{cast.character}</p>
-            </>
+            </div>
           );
         })}
       </ul>

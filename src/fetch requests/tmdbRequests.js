@@ -38,8 +38,15 @@ export const getTelevisionCredits = (tvId) => {
   }).then((res) => res.json());
 };
 
-export const getWatchProviders = (movieId) => {
+export const getMovieProviders = (movieId) => {
   return fetch(base_URL + "movie/" + movieId + "/watch/providers" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getTelevisionProviders = (tvId) => {
+  return fetch(base_URL + "tv/" + tvId + "/watch/providers" + APIKey + enUS, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
