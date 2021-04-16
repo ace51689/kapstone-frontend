@@ -29,33 +29,54 @@ const EntertainmentList = (props) => {
           <ButtonGroup size="sm">
 
             <Button className="mr-1" onClick={(e) => {
-              dispatch({ type: SET_MEDIUM, payload: "movie"})
+              dispatch({ type: SET_MEDIUM, payload: "movie" })
               dispatch({ type: SET_SORT_BY, payload: "popular" })
-              dispatch({ type: SET_PAGE, payload: "1" })
+              dispatch({ type: SET_PAGE, payload: 1 })
             }}>Movies</Button>
 
             <Button className="mr-3" onClick={(e) => {
               dispatch({ type: SET_MEDIUM, payload: "tv" })
               dispatch({ type: SET_SORT_BY, payload: "popular" })
-              dispatch({ type: SET_PAGE, payload: "1" })
+              dispatch({ type: SET_PAGE, payload: 1 })
             }}>Televison</Button>
           </ButtonGroup>
 
           <ButtonGroup size="sm">
 
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "popular" })}>Popular</Button>
-            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "top_rated" })}>Top Rated</Button>
+            <Button className="mr-1" onClick={(e) => {
+              dispatch({ type: SET_SORT_BY, payload: "popular" })
+              dispatch({ type: SET_PAGE, payload: 1 })
+            }}>Popular</Button>
+
+            <Button className="mr-1" onClick={(e) => {
+              dispatch({ type: SET_SORT_BY, payload: "top_rated" })
+              dispatch({ type: SET_PAGE, payload: 1 })
+            }}>Top Rated</Button>
+
             {
               medium === "movie" ?
-                <Button className="mr-1" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "now_playing" })}>Now Playing</Button>
+                <Button className="mr-1" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "now_playing" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Now Playing</Button>
                 :
-                <Button className="mr-1" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "airing_today" })}>Airing Today</Button>
+                <Button className="mr-1" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "airing_today" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Airing Today</Button>
             }
+
             {
               medium === "movie" ?
-                <Button className="mr-3" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "upcoming" })}>Upcoming</Button>
+                <Button className="mr-3" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "upcoming" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Upcoming</Button>
                 :
-                <Button className="mr-3" onClick={(e) => dispatch({ type: SET_SORT_BY, payload: "on_the_air" })}>On The Air</Button>
+                <Button className="mr-3" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "on_the_air" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>On The Air</Button>
             }
 
           </ButtonGroup>
