@@ -10,15 +10,43 @@ export const getEntertainment = (medium, sortType, page) => {
   }).then((res) => res.json());
 };
 
-export const getMovie = (movie) => {
-  return fetch(base_URL + "movie/" + movie + APIKey + enUS, {
+export const getMovie = (movieId) => {
+  return fetch(base_URL + "movie/" + movieId + APIKey + enUS, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };
 
-export const getMovieCredits = (movie) => {
-  return fetch(base_URL + "movie/" + movie + "/credits" + APIKey + enUS, {
+export const getMovieCredits = (movieId) => {
+  return fetch(base_URL + "movie/" + movieId + "/credits" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getTelevision = (tvId) => {
+  return fetch(base_URL + "tv/" + tvId + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getTelevisionCredits = (tvId) => {
+  return fetch(base_URL + "tv/" + tvId + "/credits" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getMovieProviders = (movieId) => {
+  return fetch(base_URL + "movie/" + movieId + "/watch/providers" + APIKey + enUS, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+};
+
+export const getTelevisionProviders = (tvId) => {
+  return fetch(base_URL + "tv/" + tvId + "/watch/providers" + APIKey + enUS, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getMovie, getMovieCredits, getMovieProviders } from "../fetch requests/tmdbRequests";
+import { getTelevision, getTelevisionCredits, getTelevisionProviders } from "../fetch requests/tmdbRequests";
 
-const MoviePage = (props) => {
-  const [movie, setMovie] = useState({});
+const TelevisionPage = (props) => {
+  const [television, setTelevision] = useState({});
   const [crew, setCrew] = useState([]);
   const [cast, setCast] = useState([]);
   const [watchProviders, setWatchProviders] = useState({
@@ -14,10 +14,10 @@ const MoviePage = (props) => {
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
-    getMovie(props.match.params.movieId).then((res) => setMovie(res));
-    getMovieProviders(props.match.params.movieId).then((res) => {
-      console.log(res.results)
-      if(Object.keys(res.results).length !== 0) {
+    getTelevision(props.match.params.tvId).then((res) => setTelevision(res));
+
+    getTelevisionProviders(props.match.params.tvId).then((res) => {
+      if (Object.keys(res.results).length !== 0) {
         setWatchProviders({
           stream: res.results.US.flatrate,
           rent: res.results.US.rent,
@@ -35,20 +35,18 @@ const MoviePage = (props) => {
       }
     });
 
-    getMovieCredits(props.match.params.movieId).then((res) => {
+    getTelevisionCredits(props.match.params.tvId).then((res) => {
       setCrew(res.crew)
       setCast(res.cast)
     })
-
-  }, [props.match.params.movieId]);
+  }, [props.match.params.tvId]);
 
   return (
     <>
-      <h1>{movie.original_title}</h1>
-      <h3>{movie.tagline}</h3>
-      <img src={movie.poster_path && baseUrl + movie.poster_path} alt={`This is the theatrical poster for ${movie.original_title}`} />
-      <p>{movie.overview}</p>
-
+      <h1>{television.name}</h1>
+      <h3>{television.tagline}</h3>
+      <img src={television.poster_path && baseUrl + television.poster_path} alt={`This is the official poseter for ${television.name} `} />
+      <p>{television.overview}</p>
 
       {<h3>Watch Providers:</h3>}
       <ul className="watch-providers">
@@ -73,6 +71,7 @@ const MoviePage = (props) => {
         {watchProviders.none === null && <div>There are no currently known watch providers. Please try again at a later date.</div>}
       </ul>
 
+
       <ul>
         <h3>Executive Producers:</h3>
         {crew.map((crew) => {
@@ -84,7 +83,7 @@ const MoviePage = (props) => {
         <h3>Director:</h3>
         {crew.map((crew) => {
           if (crew.job === "Director") {
-            return <h5 key={crew.id}>{crew.name}</h5>;
+            return <h5>{crew.name}</h5>;
           }
           return false
         })}
@@ -103,4 +102,4 @@ const MoviePage = (props) => {
   );
 };
 
-export default MoviePage;
+export default TelevisionPage;

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react'
 import MovieItem from '../components/MovieItem'
 import TelevisionItem from "../components/TelevisionItem"
 import { getEntertainment } from "../fetch requests/tmdbRequests"
+import { useStore, SET_MEDIUM, SET_SORT_BY, SET_PAGE } from "../store/store"
 import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap"
 import "./views.css"
 
 const EntertainmentList = (props) => {
   const [state, setState] = useState({ entertainment: [] })
-  const [medium, setMedium] = useState("movie")
-  const [sortBy, setSortBy] = useState("popular")
-  const [page, setPage] = useState(1)
+  const dispatch = useStore((state) => state.dispatch)
+  const medium = useStore((state) => state.medium)
+  const sortBy = useStore((state) => state.sortBy)
+  const page = useStore((state) => state.page)
 
   useEffect(() => {
     getEntertainment(medium, sortBy, page)
@@ -27,33 +29,54 @@ const EntertainmentList = (props) => {
           <ButtonGroup size="sm">
 
             <Button className="mr-1" onClick={(e) => {
-              setMedium("movie")
-              setSortBy("popular")
-              setPage(1)
+              dispatch({ type: SET_MEDIUM, payload: "movie" })
+              dispatch({ type: SET_SORT_BY, payload: "popular" })
+              dispatch({ type: SET_PAGE, payload: 1 })
             }}>Movies</Button>
 
             <Button className="mr-3" onClick={(e) => {
-              setMedium("tv")
-              setSortBy("popular")
-              setPage(1)
+              dispatch({ type: SET_MEDIUM, payload: "tv" })
+              dispatch({ type: SET_SORT_BY, payload: "popular" })
+              dispatch({ type: SET_PAGE, payload: 1 })
             }}>Televison</Button>
           </ButtonGroup>
 
           <ButtonGroup size="sm">
 
-            <Button className="mr-1" onClick={(e) => setSortBy("popular")}>Popular</Button>
-            <Button className="mr-1" onClick={(e) => setSortBy("top_rated")}>Top Rated</Button>
+            <Button className="mr-1" onClick={(e) => {
+              dispatch({ type: SET_SORT_BY, payload: "popular" })
+              dispatch({ type: SET_PAGE, payload: 1 })
+            }}>Popular</Button>
+
+            <Button className="mr-1" onClick={(e) => {
+              dispatch({ type: SET_SORT_BY, payload: "top_rated" })
+              dispatch({ type: SET_PAGE, payload: 1 })
+            }}>Top Rated</Button>
+
             {
               medium === "movie" ?
-                <Button className="mr-1" onClick={(e) => setSortBy("now_playing")}>Now Playing</Button>
+                <Button className="mr-1" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "now_playing" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Now Playing</Button>
                 :
-                <Button className="mr-1" onClick={(e) => setSortBy("airing_today")}>Airing Today</Button>
+                <Button className="mr-1" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "airing_today" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Airing Today</Button>
             }
+
             {
               medium === "movie" ?
-                <Button className="mr-3" onClick={(e) => setSortBy("upcoming")}>Upcoming</Button>
+                <Button className="mr-3" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "upcoming" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>Upcoming</Button>
                 :
-                <Button className="mr-3" onClick={(e) => setSortBy("on_the_air")}>On The Air</Button>
+                <Button className="mr-3" onClick={(e) => {
+                  dispatch({ type: SET_SORT_BY, payload: "on_the_air" })
+                  dispatch({ type: SET_PAGE, payload: 1 })
+                }}>On The Air</Button>
             }
 
           </ButtonGroup>
@@ -61,20 +84,20 @@ const EntertainmentList = (props) => {
           <ButtonGroup size="sm">
             <Button
               className="mr-1"
-              onClick={(e) => setPage(page > 1 ? page - 1 : page)}
+              onClick={(e) => dispatch({ type: SET_PAGE, payload: (page > 1 ? page - 1 : page) })}
             >{"<"}</Button>
-            <Button className="mr-1" onClick={(e) => setPage(1)}>1</Button>
-            <Button className="mr-1" onClick={(e) => setPage(2)}>2</Button>
-            <Button className="mr-1" onClick={(e) => setPage(3)}>3</Button>
-            <Button className="mr-1" onClick={(e) => setPage(4)}>4</Button>
-            <Button className="mr-1" onClick={(e) => setPage(5)}>5</Button>
-            <Button className="mr-1" onClick={(e) => setPage(6)}>6</Button>
-            <Button className="mr-1" onClick={(e) => setPage(7)}>7</Button>
-            <Button className="mr-1" onClick={(e) => setPage(8)}>8</Button>
-            <Button className="mr-1" onClick={(e) => setPage(9)}>9</Button>
-            <Button className="mr-1" onClick={(e) => setPage(10)}>10</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 1 })}>1</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 2 })}>2</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 3 })}>3</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 4 })}>4</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 5 })}>5</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 6 })}>6</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 7 })}>7</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 8 })}>8</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 9 })}>9</Button>
+            <Button className="mr-1" onClick={(e) => dispatch({ type: SET_PAGE, payload: 10 })}>10</Button>
             <Button onClick={(e) =>
-              setPage(page < 10 ? page + 1 : page)}
+              dispatch({ type: SET_PAGE, payload: (page < 10 ? page + 1 : page) })}
             >{">"}</Button>
           </ButtonGroup>
         </ButtonToolbar>
