@@ -20,15 +20,16 @@ const MultiSearch = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const search = query.trim().replace(" ", "%20")
-    multiSearch(search).then((res) => {
-      if (res.page) {
+    multiSearch(query.trim()).then((res) => {
+      if (res.total_pages > 0) {
         setResObject({
           object: res,
         })
         dispatch({ type: SET_SEARCH, payload: res.results})
-        setSearchQuery(search)
+        setSearchQuery(query.trim())
         setQuery("")
+      } else {
+        alert("Sorry, there were no results for that term. Please Try again.")
       }
     })
   }
