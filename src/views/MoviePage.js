@@ -54,21 +54,21 @@ const MoviePage = (props) => {
       <ul className="watch-providers">
         {watchProviders.stream && <h4>Streaming:</h4>}
         {
-          watchProviders.stream && watchProviders.stream.map((provider) => {
+          watchProviders.stream ? watchProviders.stream.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
         {watchProviders.rent && <h4>Rent:</h4>}
         {
-          watchProviders.rent && watchProviders.rent.map((provider) => {
+          watchProviders.rent ? watchProviders.rent.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
         {watchProviders.buy && <h4>Buy:</h4>}
         {
-          watchProviders.buy && watchProviders.buy.map((provider) => {
+          watchProviders.buy ? watchProviders.buy.map((provider) => {
             return <li key={provider.provider_id}>{provider.provider_name}</li>
-          })
+          }) : <></>
         }
         {watchProviders.none === null && <div>There are no currently known watch providers. Please try again at a later date.</div>}
       </ul>
