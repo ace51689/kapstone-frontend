@@ -4,6 +4,7 @@ import Home from "./views/Home"
 import EntertainmentList from "./views/EntertainmentList";
 import MoviePage from "./views/MoviePage";
 import TelevisionPage from "./views/TelevisionPage"
+import SearchPage from "./views/SearchPage"
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/tv/:tvId" render={(routeProps) => {
           return <TelevisionPage {...routeProps} />
         }}/>
+
+        <Route path ="/search" component={SearchPage} />
 
       </Switch>
     </div>

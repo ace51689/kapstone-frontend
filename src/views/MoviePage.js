@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  getMovie,
-  getMovieCredits,
-  getMovieProviders,
-} from "../fetch requests/tmdbRequests";
+import { getMovie, getMovieCredits, getMovieProviders} from "../fetch requests/tmdbRequests";
 import { Card } from "react-bootstrap";
 
 const MoviePage = (props) => {
@@ -14,7 +10,7 @@ const MoviePage = (props) => {
     streaming: undefined,
     rent: undefined,
     buy: undefined,
-    none: undefined,
+    none: undefined
   });
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
@@ -34,7 +30,7 @@ const MoviePage = (props) => {
           stream: undefined,
           rent: undefined,
           buy: undefined,
-          none: null,
+          none: null
         });
       }
     });
