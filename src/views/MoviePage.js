@@ -17,8 +17,8 @@ const MoviePage = (props) => {
   useEffect(() => {
     getMovie(props.match.params.movieId).then((res) => setMovie(res));
     getMovieProviders(props.match.params.movieId).then((res) => {
-      console.log(res.results);
-      if (Object.keys(res.results).length !== 0) {
+      console.log(res.results.US);
+      if (res.results.US !== undefined) {
         setWatchProviders({
           stream: res.results.US.flatrate,
           rent: res.results.US.rent,
