@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getTelevision, getTelevisionCredits, getTelevisionProviders } from "../fetch requests/tmdbRequests";
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import unknownUser from "../assets/Unknown-Actor.png"
 import unknownPoster from "../assets/Unknown-Poster.jpg"
 
@@ -110,6 +110,7 @@ const TelevisionPage = (props) => {
               </ul>
             </Card.Text>
           </Card>
+          <Button>Add {television.name} to Favorites</Button>
         </Card.Body>
         {television.poster_path !== null ? <img
           src={television.poster_path && baseUrl + television.poster_path}
@@ -124,12 +125,13 @@ const TelevisionPage = (props) => {
         {cast.map((cast) => {
           if (cast.profile_path !== null) {
             return (
-              <div key={cast.id}>
+              <div style={{ width: "120px" }} key={cast.id}>
                 <img
+                  style={{ width: "90px" }}
                   src={baseUrl + cast.profile_path}
                   alt={`This is ${cast.name}`}
                 />
-                <p>{cast.name}</p>
+                <p style={{ display: "wrap" }}>{cast.name}</p>
                 <p>{cast.character}</p>
               </div>
             );
@@ -137,6 +139,7 @@ const TelevisionPage = (props) => {
             return (
               <div key={cast.id}>
                 <img
+                  style={{ width: "90px" }}
                   src={unknownUser}
                   alt={`This is ${cast.name}`}
                 />
