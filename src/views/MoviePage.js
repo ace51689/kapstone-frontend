@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getMovie, getMovieCredits, getMovieProviders} from "../fetch requests/tmdbRequests";
-import { Card } from "react-bootstrap";
+import { getMovie, getMovieCredits, getMovieProviders } from "../fetch requests/tmdbRequests";
+import { Card, Button } from "react-bootstrap";
 import unknownUser from "../assets/Unknown-Actor.png"
 import unknownPoster from "../assets/Unknown-Poster.jpg"
 
@@ -48,7 +48,7 @@ const MoviePage = (props) => {
       <Card>
         <Card.Body>
           <Card.Title>
-            <h1>{movie.original_title}</h1>
+            <h1>{movie.title}</h1>
           </Card.Title>
           <Card.Text>
             <h3>{movie.tagline}</h3>
@@ -114,6 +114,7 @@ const MoviePage = (props) => {
               </ul>
             </Card.Text>
           </Card>
+          <Button>Add {movie.title} to Favorites</Button>
         </Card.Body>
         {movie.poster_path !== null ? <img
           src={movie.poster_path && baseUrl + movie.poster_path}
@@ -128,8 +129,9 @@ const MoviePage = (props) => {
         {cast.map((cast) => {
           if (cast.profile_path !== null) {
             return (
-              <div key={cast.id}>
+              <div style={{ width: "120px" }} key={cast.id}>
                 <img
+                  style={{ width: "90px" }}
                   src={baseUrl + cast.profile_path}
                   alt={`This is ${cast.name}`}
                 />
@@ -141,6 +143,7 @@ const MoviePage = (props) => {
             return (
               <div key={cast.id}>
                 <img
+                  style={{ width: "100px" }}
                   src={unknownUser}
                   alt={`This is ${cast.name}`}
                 />
