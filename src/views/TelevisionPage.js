@@ -18,7 +18,8 @@ const TelevisionPage = (props) => {
     getTelevision(props.match.params.tvId).then((res) => setTelevision(res));
 
     getTelevisionProviders(props.match.params.tvId).then((res) => {
-      if (Object.keys(res.results).length !== 0) {
+      if (res.results.US !== undefined) {
+        console.log(res)
         setWatchProviders({
           stream: res.results.US.flatrate,
           rent: res.results.US.rent,
@@ -26,6 +27,7 @@ const TelevisionPage = (props) => {
           none: undefined
         })
       }
+
       else {
         setWatchProviders({
           stream: undefined,
