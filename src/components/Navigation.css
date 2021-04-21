@@ -1,0 +1,28 @@
+.justify-content-between {
+  display: flex;
+  font-size: large;
+  background-color: lightblue; 
+}
+
+.nav-left {
+  font-size: xx-large;
+  color: white;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center
+}
+
+div.nav-item a {
+  color: #007bff
+}
+
+button.btn.btn-link {
+  color: #007bff;
+  font-size: 18px;
+  border: 0px;
+  padding: 0px;
+  padding-bottom: 1px;
+}
+

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MovieItem from '../components/MovieItem'
 import TelevisionItem from "../components/TelevisionItem"
+import Navigation from "../components/Navigation"
 import { getEntertainment } from "../fetch requests/tmdbRequests"
 import { useStore, SET_MEDIUM, SET_SORT_BY, SET_PAGE } from "../store/store"
 import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap"
@@ -22,6 +23,7 @@ const EntertainmentList = (props) => {
 
   return (
     <>
+      <Navigation />
       <div className="sort-and-nav">
 
         <ButtonToolbar>

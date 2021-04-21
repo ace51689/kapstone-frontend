@@ -34,7 +34,6 @@ const MultiSearch = () => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Form.Label>Search</Form.Label>
         <Form.Control onChange={handleChange} type="text" value={query} placeholder="Enter your search term here" />
         <Button type="submit">Search</Button>
       </Form>

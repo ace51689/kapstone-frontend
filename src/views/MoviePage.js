@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getMovie, getMovieCredits, getMovieProviders } from "../fetch requests/tmdbRequests";
 import { Card, Button } from "react-bootstrap";
+import Navigation from "../components/Navigation"
 import unknownUser from "../assets/Unknown-Actor.png"
 import unknownPoster from "../assets/Unknown-Poster.jpg"
 
@@ -45,6 +46,7 @@ const MoviePage = (props) => {
 
   return (
     <>
+    <Navigation />
       <Card>
         <Card.Body>
           <Card.Title>

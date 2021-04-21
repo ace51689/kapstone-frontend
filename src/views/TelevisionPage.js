@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTelevision, getTelevisionCredits, getTelevisionProviders } from "../fetch requests/tmdbRequests";
 import { Card, Button } from 'react-bootstrap'
+import Navigation from "../components/Navigation"
 import unknownUser from "../assets/Unknown-Actor.png"
 import unknownPoster from "../assets/Unknown-Poster.jpg"
 
@@ -48,6 +49,7 @@ const TelevisionPage = (props) => {
 
   return (
     <>
+      <Navigation />
       <Card>
         <Card.Body>
           <Card.Title>
