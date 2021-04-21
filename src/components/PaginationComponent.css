@@ -2,4 +2,10 @@ span.pagination-parent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
+}
+
+ul.pagination.pagination-sm {
+  display: flex;
+  flex-direction: row;
 }
