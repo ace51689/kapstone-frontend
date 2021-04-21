@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getTelevision, getTelevisionCredits, getTelevisionProviders } from "../fetch requests/tmdbRequests";
 import { Card } from 'react-bootstrap'
+import unknownUser from "../assets/Unknown-Actor.png"
+import unknownPoster from "../assets/Unknown-Poster.jpg"
 
 const TelevisionPage = (props) => {
   const [television, setTelevision] = useState({});
@@ -109,24 +111,40 @@ const TelevisionPage = (props) => {
             </Card.Text>
           </Card>
         </Card.Body>
-        <img
+        {television.poster_path !== null ? <img
           src={television.poster_path && baseUrl + television.poster_path}
-          alt={`This is the theatrical poster for ${television.name}`}
-        />
+          alt={`This is the theatrical poster for ${television.original_title}`}
+        /> : <img
+          src={unknownPoster}
+          alt={`There is no known poster for ${television.original_title}`}
+        />}
       </Card>
       <Card>
         <h3>Cast:</h3>
         {cast.map((cast) => {
-          return (
-            <div key={cast.id}>
-              <img
-                src={baseUrl + cast.profile_path}
-                alt={`This is ${cast.name}`}
-              />
-              <p>{cast.name}</p>
-              <p>{cast.character}</p>
-            </div>
-          );
+          if (cast.profile_path !== null) {
+            return (
+              <div key={cast.id}>
+                <img
+                  src={baseUrl + cast.profile_path}
+                  alt={`This is ${cast.name}`}
+                />
+                <p>{cast.name}</p>
+                <p>{cast.character}</p>
+              </div>
+            );
+          } else {
+            return (
+              <div key={cast.id}>
+                <img
+                  src={unknownUser}
+                  alt={`This is ${cast.name}`}
+                />
+                <p>{cast.name}</p>
+                <p>{cast.character}</p>
+              </div>
+            )
+          }
         })}
       </Card>
     </>
