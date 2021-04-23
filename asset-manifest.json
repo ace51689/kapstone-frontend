@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/kapstone-frontend/static/css/main.7878b8ec.chunk.css",
+    "main.js": "/kapstone-frontend/static/js/main.0dad5f33.chunk.js",
+    "main.js.map": "/kapstone-frontend/static/js/main.0dad5f33.chunk.js.map",
+    "runtime-main.js": "/kapstone-frontend/static/js/runtime-main.14fc3dec.js",
+    "runtime-main.js.map": "/kapstone-frontend/static/js/runtime-main.14fc3dec.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/kapstone-frontend/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.67648f80.chunk.js": "/kapstone-frontend/static/js/2.67648f80.chunk.js",
+    "static/js/2.67648f80.chunk.js.map": "/kapstone-frontend/static/js/2.67648f80.chunk.js.map",
+    "static/js/3.b9a46c72.chunk.js": "/kapstone-frontend/static/js/3.b9a46c72.chunk.js",
+    "static/js/3.b9a46c72.chunk.js.map": "/kapstone-frontend/static/js/3.b9a46c72.chunk.js.map",
+    "index.html": "/kapstone-frontend/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/kapstone-frontend/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.7878b8ec.chunk.css.map": "/kapstone-frontend/static/css/main.7878b8ec.chunk.css.map",
+    "static/js/2.67648f80.chunk.js.LICENSE.txt": "/kapstone-frontend/static/js/2.67648f80.chunk.js.LICENSE.txt",
+    "static/media/Unknown-Actor.1f84916a.png": "/kapstone-frontend/static/media/Unknown-Actor.1f84916a.png",
+    "static/media/Unknown-Poster.3ffa46d3.jpg": "/kapstone-frontend/static/media/Unknown-Poster.3ffa46d3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.14fc3dec.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.67648f80.chunk.js",
+    "static/css/main.7878b8ec.chunk.css",
+    "static/js/main.0dad5f33.chunk.js"
+  ]
+}
